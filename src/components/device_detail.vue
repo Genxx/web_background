@@ -45,58 +45,59 @@
         </li>
       </ul>
     </div>
-    <div class="oth">
+    <div class="oth" @click="test">
       <p class="fl">备注</p>
-      <p class="fr">未填写&gt;</p>
+      <p class="fr" >{{remarks}}</p>
     </div>
     <div class="quit">
       解除绑定
     </div>
-  </div>
-  <!--<dialog v-show="dialogControl" type="confirm" title="标题"-->
-          <!--@weui-dialog-confirm="handleDialogAction('确定')"-->
-          <!--@weui-dialog-cancel="handleDialogAction('取消')">-->
-    <!--<p>自定义弹窗内容</p>-->
-    <!--<p>hahahaha，快点确定</p>-->
-  <!--</dialog>-->
 
+  </div>
 </template>
 
 <script>
   import Vue from 'vue'
-
   import jw from '../../node_modules/jquery-weui/dist/js/jquery-weui.min.js'
-
-//  import Dialog from 'vue-weui';
-  // 只引用需要的文件，减少文件大小
-//  import dialog from '../../node_modules/vue-weui/components/dialog/dialog.vue';
-
   export default {
     component: {
-//      dialog
     },
     data() {
       return {
-//        dialogControl: true
+        remarks: '未填写>'
       }
     },
     methods: {
-//      handleDialogAction(action) {
-//        this.dialogControl = false;
-//      }
+      test(){
+        $.prompt({
+          title:'',
+          text: '备注',
+          input: '请填写备注内容',
+          empty: false, // 是否允许为空
+          props: ['input'],
+          onOK: function (input) {
+            if(input!=="请填写备注内容"&&input!==''){
+              this.$http.post('/auth/v1/user/bz?'+input,data)
+                .then(function(res){
+                  console.log(res.data)
+                  $('.fr').html(input)
+                },function(err){
+                  $.alert("设置失败");
+                })
+            }
+            if(inpout==''){
+              $.alert("设置失败");
+            }
+          },
+          onCancel: function () {
+            //点击取消
+          }
+        });
+      }
     },
     mounted() {
-//      $.modal({
-//          title: "Hello",
-//          text: "我是自定义的modal",
-//          buttons: [
-//            { text: "支付宝", onClick: function(){ console.log(1)} },
-//            { text: "微信支付", onClick: function(){ console.log(2)} },
-//            { text: "取消", className: "default", onClick: function(){ console.log(3)} },
-//          ]
-//        });
-//      }
     }
+
   }
 </script>
 

@@ -2,7 +2,7 @@
   "name": "web_background",
   "version": "1.0.0",
   "description": "后台界面",
-  "author": "Gen����x<1647940270@qq.com><",
+  "author": "Genxx<1647940270@qq.com>",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
@@ -12,7 +12,8 @@
   "dependencies": {
     "vue": "^2.3.3",
     "vue-router": "^2.6.0",
-    "vue-weui": "^0.3.2"
+    "vue-weui": "^0.3.2",
+    "vue2-datepick": "^1.0.6"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
