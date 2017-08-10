@@ -1,5 +1,5 @@
 <template>
-  <div id="login">
+  <div id="login" method="post">
     <form>
       <div id="logo" width="100%">
         <img src="../assets/logo.png" alt="" width="50%">
@@ -11,7 +11,7 @@
         <input type="password" name="password" placeholder="密码" v-model="password" v-on:blur="_password($event)"  required>
       </div>
       <div class="smit">
-        <button type="button" @click="_submit">登录</button>
+        <button type="button" @click="_submit($event)">登录</button>
         <router-link to="/regis" tag="button">注册</router-link>
       </div>
       <p v-if="error">{{msg}}</p>
@@ -54,7 +54,7 @@
         }
       },
       _phone(e) {
-        const pattern = /^(?:13\d|15[89])-?\d{5}(\d{3}|\*{3})$/;
+        const pattern = /^1[34578]\d{9}$/;
         console.log(e)
         if (!pattern.test(this.user)) {
           this.msg = "您输入的手机号不正确，请重新输入"
@@ -67,29 +67,30 @@
       _password(e) {
         const pattern = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/;
         if (!pattern.test(this.password)) {
-          this.msg = "密码长度应在8-16位，请重新输入"
+          this.msg = "密码输入错误，请重新输入"
           this.error = true
           e.target.focus()
         } else {
           this.error = false
         }
       },
-      _submit() {
+      _submit(e) {
         console.log(this.user)
         console.log(this.password)
-        const pattern = /^(?:13\d|15[89])-?\d{5}(\d{3}|\*{3})$/;
+        const pattern = /^1[34578]\d{9}$/;
         const pattern2 = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/;
         if (this.user != null && this.password != null&&pattern.test(this.user)&&pattern2.test(this.password)) {
-          this.$http.post('/auth/v1/user/login_by_cellphone?user=' + this.user + '&password=' + this.password)
-            .then(function (res) {
-              console.log(res.data)
-              if (res.data[success]) {
-                localStorage.setItem("token", res.data[token])
-                this.$router.go("/index")
-              }
-            }, function (err) {
-              console.log(err)
-            })
+//          this.$http.post('/auth/v1/user/login_by_cellphone?user=' + this.user + '&password=' + this.password)
+//            .then(function (res) {
+//              console.log(res.data)
+//              if (res.data[success]) {
+//                localStorage.setItem("token", res.data[token])
+//                this.$router.go("/index")
+//              }
+//            }, function (err) {
+//              console.log(err)
+//            })
+          $('form').submit();
         }
 
       },
