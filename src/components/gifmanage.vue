@@ -1,5 +1,5 @@
 <template>
-	<div id="gifmanage">
+	<div id="gifmanage" v-title data-title="礼品管理">
     	<ul class="list">
     		<li>
     			<p class="tit">纸巾</p>

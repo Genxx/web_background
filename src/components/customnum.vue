@@ -1,10 +1,10 @@
 <template>
-	<div id="customnum">
+	<div id="customnum" v-title data-title="客服设置">
     	<div class="num">
     		<input type="text" name="" placeholder="乐摇摇客服4001234561234">
     	</div>
     	<div class="smit">保存</div>
-    	<p class="clear">清除</p>
+    	<button class="s_clear weui-btn">清除</button>
 	</div>
 </template>
 
@@ -14,20 +14,20 @@ import Vue from 'vue'
 import jw from '../../node_modules/jquery-weui/dist/js/jquery-weui.min.js'
 
 export default {
-  
+
 	components: {
-	    
+
 	},
 	data () {
 	  	return{
-	  		
+
 	  	}
 	},
 	methods:{
-        
+
     },
 	mounted (){
-    
+
 	}
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-	<div id="devicenum">
+	<div id="devicenum" v-title data-title="设置设备编号">
     	<div class="header">
     		请选择设备编号
     	</div>

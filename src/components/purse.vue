@@ -1,5 +1,5 @@
 <template>
-	<div id="purse">
+	<div id="purse" v-title data-title="钱包">
     	<div class="balance ">
     		<div class="fl">
     			<p>账号余额</p>

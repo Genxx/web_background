@@ -97,5 +97,5 @@ export default new Router({
       path:'/delivery',
       component:delivery
     }
-  ]
+  ],
 })

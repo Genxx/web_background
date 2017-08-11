@@ -1,5 +1,5 @@
 <template>
-  <div id="account">
+  <div id="account" v-title data-title="我的账号">
     <div class="self-box">
       <img class="fl" src="../assets/admin.jpeg" alt="picture" width="100" height="100">
       <div class="fl self">

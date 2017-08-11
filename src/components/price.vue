@@ -1,5 +1,5 @@
 <template>
-	<div id="price">
+	<div id="price" v-title data-title="设备价格设置">
     <div class="deviceid">
       <p class="fl">设备</p>
       <p class="fl mk">娃娃机117782</p>
@@ -23,20 +23,20 @@ import Vue from 'vue'
 import jw from '../../node_modules/jquery-weui/dist/js/jquery-weui.min.js'
 
 export default {
-  
+
 	components: {
-	    
+
 	},
 	data () {
 	  	return{
-	  		
+
 	  	}
 	},
 	methods:{
-	  	
+
   },
 	mounted (){
-		
+
 	}
 }
 </script>

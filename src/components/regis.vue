@@ -1,5 +1,5 @@
 <template>
-  <div id="regis">
+  <div id="regis" v-title data-title="注册页面">
     <form  method="post">
       <div id="logo" width="100%">
         <img src="../assets/logo.png" alt="" width="50%">

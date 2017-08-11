@@ -1,5 +1,5 @@
 <template>
-  <div id="login" method="post">
+  <div id="login" method="post" v-title data-title="登录页面">
     <form>
       <div id="logo" width="100%">
         <img src="../assets/logo.png" alt="" width="50%">

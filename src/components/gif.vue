@@ -1,5 +1,5 @@
 <template>
-  <div id="gif">
+  <div id="gif" v-title data-title="礼品设置">
       <div class="focus">
         <span>设备礼品统计时，应保证设备与机台接线正确，</span>
         <a href="#">查看安装视频</a>
@@ -48,20 +48,20 @@ import Vue from 'vue'
 import jw from '../../node_modules/jquery-weui/dist/js/jquery-weui.min.js'
 
 export default {
-  
+
   	components: {
-  	    
+
   	},
   	data () {
   	  	return{
-  	  		
+
   	  	}
   	},
   	methods:{
-  	  	
+
     },
   	mounted (){
-  		
+
   	}
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div id="deviceDetail">
+  <div id="deviceDetail" v-title data-title="设备详情">
     <ul class="device">
       <li class="device-sty">
         <p class="fl">设备类型</p>

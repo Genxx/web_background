@@ -1,5 +1,5 @@
 <template>
-	<div id="balance">
+	<div id="balance" v-title data-title="提现">
     	<div class="cash">
             <div class="sty">
                 <p class="fl wd100">提现方式</p>
@@ -35,20 +35,20 @@ import Vue from 'vue'
 import jw from '../../node_modules/jquery-weui/dist/js/jquery-weui.min.js'
 
 export default {
-  
+
 	components: {
-	    
+
 	},
 	data () {
 	  	return{
-	  		
+
 	  	}
 	},
 	methods:{
-        
+
     },
 	mounted (){
-    
+
 	}
 }
 </script>

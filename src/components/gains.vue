@@ -1,5 +1,5 @@
 <template>
-	<div id="gains">
+	<div id="gains" v-title data-title="设备管理">
     <ul class="times-list">
       <li id="today" @click="_today()" :class="liNum==1?'active': ''">今日</li>
       <li id="yesterday" @click="_yesterday()" :class="liNum==2?'active': ''">昨天</li>
@@ -15,7 +15,7 @@
     </div>
     <div class="place">
       <p class="fl">场地</p>
-      <input class="weui-input fl mr0" type="text" value="全部" @click="_show-place()" id="show-place" />
+      <input class="weui-input fl mr0" type="text" value="全部" @click="_showPlace()" id="show-place" />
     </div>
     <div class="gains-detail">
       <div class="tit">
@@ -90,6 +90,9 @@ export default {
 	  	}
 	},
 	methods:{
+    _showPlace(){
+//      $("#show-place").picker("close")
+    },
 	  _place () {
       $("#show-place").picker({
         title: "请选择区域",

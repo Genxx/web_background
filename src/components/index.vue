@@ -1,9 +1,9 @@
 <template>
-	<div id="app">
+	<div id="app" v-title data-title="设备管理系统">
     	<div class="header">
             <div class="header-t">
                 <p>今日收益 (元)</p>
-                <h3>0.60</h3>
+                <h3>{{money}}</h3>
             </div>
             <ul class="header-m">
                 <li class="online">
@@ -57,9 +57,15 @@
 <script>
 import Vue from 'vue'
 import jw from '../../node_modules/jquery-weui/dist/js/jquery-weui.min.js'
+import {mapGetters} from 'vuex'
 
 export default {
-
+  computed:{
+    ...mapGetters({
+      money:'money',
+      deviceInfo:'deviceInfo'
+    })
+  },
 	components: {
 
 	},
@@ -81,7 +87,9 @@ export default {
         }
 	},
 	mounted (){
-
+//    console.log(this.money)
+    console.log(this.deviceInfo[0].shopName)
+//    console.log(this.$store.getters.money)
 	}
 }
 </script>

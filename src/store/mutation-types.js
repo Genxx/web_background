@@ -1,0 +1,2 @@
+export const SET_MONEY = 'SET_MONEY'
+export const SET_DElIVERY_ADDRESS = 'SET_DElIVERY_ADDRESS'

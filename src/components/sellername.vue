@@ -1,5 +1,5 @@
 <template>
-	<div id="sellername">
+	<div id="sellername" v-title data-title="商户名称">
 		<div class="tit">
 			显示在页面头部，在使用过程中传播品牌
 		</div>
@@ -17,13 +17,13 @@ import Vue from 'vue'
 import jw from '../../node_modules/jquery-weui/dist/js/jquery-weui.min.js'
 
 export default {
-  
+
 	components: {
-	    
+
 	},
 	data () {
 	  	return{
-	  		
+
 	  	}
 	},
 	methods:{
@@ -32,7 +32,7 @@ export default {
         }
     },
 	mounted (){
-    
+
 	}
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-	<div id="device">
+	<div id="device" v-title data-title="设备管理">
     	<div class="status">
             <span class="tit">状态</span>
             <span class="all active">全部1</span>
