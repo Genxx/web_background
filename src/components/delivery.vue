@@ -1,6 +1,6 @@
 <template>
   <div id="delivery" v-title data-title="投放地址">
-    <div v-for="item in deviceInfo">
+    <div v-for="(item,index) in deviceInfo">
       <div class="list">
         <div class="addr">
           <div class="box">
@@ -24,7 +24,7 @@
           </div>
           <div class="fr">
             <span class="edit">编辑</span>
-            <span class="del">删除</span>
+            <span class="del" @click="delAddr(index)">删除</span>
           </div>
         </div>
       </div>
@@ -52,19 +52,14 @@
     components: {},
     data() {
       return {
-//        deviceInfo:[
-//          {
-//            shopName:"考拉",
-//            type:'其他',
-//            diviceNum:"1",
-//            address:"布衣港电商产业园"
-//          }
-//        ]
       }
     },
-    methods: {},
+    methods: {
+      delAddr(i){
+        this.$store.dispatch('delectAddrList', i)
+      }
+    },
     mounted() {
-//      console.log(this.deviceInfo.shopName)
       console.log(this.deviceInfo)
 
     }

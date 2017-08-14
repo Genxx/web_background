@@ -9,6 +9,16 @@ const state = {
       address:"布衣港电商产业园"
     }
   ],
+  gifInfo:[
+    {
+      typeGifInfo:'纸巾1',
+      moneyGifInfo:'0.3'
+    },
+    {
+      typeGifInfo:'纸巾2',
+      moneyGifInfo:'0.4'
+    }
+  ]
 }
 // const deviceInfo= [{
 //   shopName: '',

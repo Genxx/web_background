@@ -13,9 +13,9 @@
         <p class="fl">详细地址</p>
         <input class="fr" placeholder="请填写" v-model="deviceInfo.detailedAddress"/>
       </li>
-      <li class="place-sty">
+      <li class="place-sty" >
         <p class="fl">地址类型</p>
-        <input class="fr" placeholder="选填" v-model="deviceInfo.type" id="type"/>
+        <input class="fr" placeholder="选填"  id="type" @click="_change"/>
       </li>
       <li class="place-defu">
         <div class="fl">
@@ -50,30 +50,36 @@
           {
             shopName: '',
             detailedAddress: '',
-            type: '',
-            address: ''
+            type: 'qweqweq',
+            address: '',
+            diviceNum:'1'
           }
       }
     },
     methods: {
       save(){
-         this.$store.commit('SET_DElIVERY_ADDRESS',this.deviceInfo)
-        console.log()
+        this.deviceInfo.type=$("#type")[0].value
+        console.log(this.deviceInfo.type);
+        this.$store.commit('SET_DElIVERY_ADDRESS',this.deviceInfo)
         this.$router.push('/delivery')
+      },
+      _change(){
+        $("#type").picker({
+          title: "请选择地区类型",
+          cols: [
+            {
+              textAlign: 'center',
+              values: ['电影院', 'KTV', '游戏厅', '商城','其他']
+            }
+          ],
+          onChange: function () {
+          },
+          onClose: function (p, v, d) {
+          }
+        });
       }
     },
     mounted() {
-      $("#type").picker({
-        title: "请选择区域",
-        toolbar: false,
-        toolbarCloseText: '确定',
-        cols: [
-          {
-            textAlign: 'center',
-            values: ['全部', '考拉', '考拉2', '考拉3']
-          }
-        ]
-      });
     }
   }
 </script>

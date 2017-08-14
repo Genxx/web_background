@@ -6,8 +6,6 @@
 <script>
   import store from './store/index'
   import {initStore} from './store/action'
-  import {showMoney} from './store/getters'
-  import {mapGetters} from 'vuex'
   import Vue from 'vue'
   Vue.directive('title', {
     inserted: function (el, binding) {
@@ -21,9 +19,6 @@
       actions:{
         initStore
       },
-      getters:{
-        showMoney
-      }
     },
     ready(){
       this.initStore()

@@ -3,13 +3,13 @@
     <div class="self-box">
       <img class="fl" src="../assets/admin.jpeg" alt="picture" width="100" height="100">
       <div class="fl self">
-        <p class="name">姓名</p>
-        <p class="phone">12345678901</p>
+        <p class="name">{{userName}}</p>
+        <p class="phone">{{userPhone}}</p>
       </div>
     </div>
     <router-link tag="div" to="/purse" class="purse">
       <p class="fl">钱包</p>
-      <p class="fr">余额0.30元</p>
+      <p class="fr">余额{{money}}元</p>
     </router-link>
     <div class="gif-box">
       <router-link tag="div" to="/gifmanage" class="gif-manage">
@@ -31,11 +31,11 @@
     <router-link tag="div" to="/delivery" class="addr">投放地址</router-link>
     <router-link tag="div" to="/customnum" class="custom">
       <p class="fl">客服</p>
-      <p class="fr">某某某客服4001001000</p>
+      <p class="fr">{{customerService}}</p>
     </router-link>
     <router-link tag="div" to="/sellername" class="seller">
       <p class="fl">商户名称</p>
-      <p class="fr">未设置</p>
+      <p class="fr">{{shopName==''?"未设置":shopName}}</p>
     </router-link>
   </div>
 </template>
@@ -49,7 +49,13 @@
 
     components: {},
     data() {
-      return {}
+      return {
+        userName:"test",
+        userPhone:"13849563211",
+        money:"0.50",
+        customerService:'小明',
+        shopName:""
+      }
     },
     methods: {},
     mounted() {

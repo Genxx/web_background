@@ -2,13 +2,13 @@
 	<div id="device" v-title data-title="设备管理">
     	<div class="status">
             <span class="tit">状态</span>
-            <span class="all active">全部1</span>
+            <span class="all active">全部{{deviceInfo.numActive}}</span>
             <span class="off-line">离线1</span>
             <span class="on-line">在线0</span>
         </div>
         <div class="place">
             <span>场地</span>
-            <input class="weui-input tag" type="text" value="全部" @click="_place()" id="show-place">全部 (1个)</input>
+            <input class="weui-input tag" type="text" v-model="deviceInfo.length" @click="_place()" id="show-place"></input>
         </div>
         <div class="inst">
             <span class="fl">离线说明</span>
@@ -51,7 +51,11 @@ export default {
 	},
 	data () {
 	  	return{
-
+            deviceInfo:[
+              {
+                numActive:1
+              }
+            ]
 	  	}
 	},
 	methods:{
