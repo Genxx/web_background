@@ -8,7 +8,9 @@ export const initStore = {
     type:'其他',
     diviceNum: 1,
     address:"布衣港电商产业园"
-  }]
+  }],
+  banlance:0,
+  advertisingRevenue:0,
 }
 export const delectGifList = function ({commit},query) {
   commit(types.SET_GIFINFO_LIST,query)

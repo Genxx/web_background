@@ -15,6 +15,9 @@ const mutations = {
   },
   [types.SET_ADDR_LIST](state,i){
     delectAddr(state,i);
+  },
+  [types.SET_BALANCE](state,balance){
+    state.balance.push(balance)
   }
 }
 function delectGifInfo(state,i){

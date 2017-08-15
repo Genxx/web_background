@@ -77,15 +77,18 @@
           props: ['input'],
           onOK: function (input) {
             if(input!=="请填写备注内容"&&input!==''){
-              this.$http.post('/auth/v1/user/bz?'+input,data)
-                .then(function(res){
-                  console.log(res.data)
-                  $('.fr').html(input)
-                },function(err){
-                  $.alert("设置失败");
-                })
+//              this.$http.post('/auth/v1/user/bz?'+input,data)
+//                .then(function(res){
+//                  console.log(res.data)
+//                  $('.fr').html(input)
+//                },function(err){
+//                  $.alert("设置失败");
+//                })
+              $.alert("设置成功")
+              console.log(input)
             }
-            if(inpout==''){
+
+            if(input=='请填写备注内容'|| input ==''){
               $.alert("设置失败");
             }
           },

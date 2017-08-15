@@ -3,3 +3,4 @@ export const SET_DElIVERY_ADDRESS = 'SET_DElIVERY_ADDRESS'
 export const SET_GIFINFO = 'SET_GIFINFO'
 export const SET_GIFINFO_LIST = "SET_GIFINFO_LIST"
 export const SET_ADDR_LIST = "SET_ADDR_LIST"
+export const SET_BALANCE = 'SET_BALANCE'

@@ -1,7 +1,7 @@
 <template>
   <div id="account" v-title data-title="我的账号">
     <div class="self-box">
-      <img class="fl" src="../assets/admin.jpeg" alt="picture" width="100" height="100">
+      <img class="fl" src="../assets/admin.png" alt="picture" width="100" height="100">
       <div class="fl self">
         <p class="name">{{userName}}</p>
         <p class="phone">{{userPhone}}</p>
@@ -9,7 +9,7 @@
     </div>
     <router-link tag="div" to="/purse" class="purse">
       <p class="fl">钱包</p>
-      <p class="fr">余额{{money}}元</p>
+      <p class="fr">余额{{balance2}}元</p>
     </router-link>
     <div class="gif-box">
       <router-link tag="div" to="/gifmanage" class="gif-manage">
@@ -42,24 +42,29 @@
 
 <script>
   import Vue from 'vue'
-
+  import {mapGetters} from 'vuex'
   import jw from '../../node_modules/jquery-weui/dist/js/jquery-weui.min.js'
+  import {toDecimal2} from '../assets/js/until'
 
   export default {
-
+    computed:{
+      ...mapGetters({
+        balance:'balance' ,
+      })
+    },
     components: {},
     data() {
       return {
         userName:"test",
         userPhone:"13849563211",
-        money:"0.50",
         customerService:'小明',
-        shopName:""
+        shopName:"",
+        balance2: 0
       }
     },
     methods: {},
     mounted() {
-
+      this.balance2 = toDecimal2(this.balance);
     }
   }
 </script>

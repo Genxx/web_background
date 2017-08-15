@@ -18,7 +18,9 @@ const state = {
       typeGifInfo:'纸巾2',
       moneyGifInfo:'0.4'
     }
-  ]
+  ],
+  balance:5,
+  advertisingRevenue:1.5
 }
 // const deviceInfo= [{
 //   shopName: '',

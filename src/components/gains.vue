@@ -10,29 +10,30 @@
     <div class="time">
       <p class="fl">时间</p>
       <div class="fl mr0">
-        <span @click="_freechoce()" id="dt-start">{{startTime}}</span>至 <span @click="_freechoce2()" id="dt-end">{{endTime}}</span>
+        <!--<span @click="_freechoce()" id="dt-start">{{startTime}}</span>至 <span @click="_freechoce2()" id="dt-end">{{endTime}}</span>-->
+        <input type="text" id="dt-start" v-model="startTime" @click = "_freechoce">至 <input type="text" id="dt-end" v-model="endTime" @click="_freechoce2()">
       </div>
     </div>
     <div class="place">
       <p class="fl">场地</p>
       <input class="weui-input fl mr0" type="text" value="全部" @click="_showPlace()" id="show-place"/>
     </div>
-    <div class="gains-detail">
+    <div class="gains-detail" v-for="item in bill">
       <div class="tit">
-        <p class="fl tit-name">考拉</p>
-        <span class="fl tit-num">1台</span>
-        <p class="fr">合计 : 0.00元</p>
+        <p class="fl tit-name">{{item.field}}</p>
+        <span class="fl tit-num">{{item.num}}台</span>
+        <p class="fr">合计 : {{item.sum}}元</p>
       </div>
       <ul class="list">
         <li class="list-online">
           <p class="fl">在线支付</p>
-          <p class="fr">0.00元</p>
+          <p class="fr">{{item.onlinePayment}}元</p>
         </li>
         <li class="list-ad">
           <p class="fl">广告收益</p>
           <p class="fr">
             <span class="col">分发0次,</span>
-            <span>0.00元</span>
+            <span>{{item.adRevenue}}元</span>
           </p>
         </li>
         <li class="list-money">
@@ -40,19 +41,19 @@
             <span>现金收益</span>
             <span class="fs">(仅兑币机)</span>
           </p>
-          <p class="fr">0.00元</p>
+          <p class="fr">{{item.cashIncome}}元</p>
         </li>
       </ul>
       <div class="sum">
         <p class="fl">合计投币</p>
         <div class="fr">
-          <p>0个</p>
-          <p class="col">线上(含广告币0个)0个,线下0个</p>
+          <p>{{item.coin}}个</p>
+          <p class="col">线上(含广告币{{item.adlineCoin}}个){{item.onlineCoin}}个,线下{{item.lineCoin}}个</p>
         </div>
       </div>
       <div class="gif-use">
         <p class="fl">礼品消耗</p>
-        <p class="fr">0个,0.00元</p>
+        <p class="fr">{{item.giftNum}}个,{{item.gifMoney}}元</p>
       </div>
     </div>
 
@@ -84,9 +85,39 @@
     components: {},
     data() {
       return {
-        startTime: {},
-        endTime: {},
+        startTime: '',
+        endTime: '',
         liNum: 1,
+        fieldList:['全部', 'test', 'test2', '考拉3'],
+        bill:[{
+          field:"考拉",
+          num:2,
+          sum:0,
+          onlinePayment:0,
+          adRevenue:0,
+          cashIncome:0,
+          coin:0,
+          onlineCoin:0,
+          adlineCoin:0,
+          lineCoin:0,
+          giftNum:0,
+          gifMoney:0,
+        },
+          {
+            field:"考拉",
+            num:2,
+            sum:0,
+            onlinePayment:0,
+            adRevenue:0,
+            cashIncome:0,
+            coin:0,
+            onlineCoin:0,
+            adlineCoin:0,
+            lineCoin:0,
+            giftNum:0,
+            gifMoney:0,
+          }
+        ]
       }
     },
     methods: {
@@ -99,7 +130,7 @@
           cols: [
             {
               textAlign: 'center',
-              values: ['全部', '考拉', '考拉2', '考拉3']
+              values:this.fieldList
             }
             ],
           onChange: function () {
@@ -149,41 +180,35 @@
         this.endTime = (GetDateStr(0));
       },
       _freechoce() {
-        let vm = this;
-        this.$calendar.show({
-          onOk(data) {
-            console.log(data)
-            vm.startTime = data.year + '-' + (data.month < 10 ? '0' + data.month : data.month) + '-' + (data.day < 10 ? '0' + data.day : data.day)
-            console.log('确定')
-          },
-          onCancel() {
-            console.log('取消')
-          },
-          year: 2015,
-          month: 2,
-          day: 20,
-        })
+//        let vm = this;
+//        this.$calendar.show({
+//          onOk(data) {
+//            console.log(data)
+//            vm.startTime = data.year + '-' + (data.month < 10 ? '0' + data.month : data.month) + '-' + (data.day < 10 ? '0' + data.day : data.day)
+//            console.log('确定')
+//          },
+//          onCancel() {
+//            console.log('取消')
+//          },
+//          year: 2015,
+//          month: 2,
+//          day: 20,
+//        })
+        $("#dt-start").calendar({
+          onChange: function (p, values, displayValues) {
+            console.log(values, displayValues);
+          }
+        });
       },
       _freechoce2() {
-        let vm = this;
-        this.$calendar.show({
-          onOk(data) {
-            console.log(data)
-            vm.endTime = data.year + '-' + (data.month < 10 ? '0' + data.month : data.month) + '-' + (data.day < 10 ? '0' + data.day : data.day);
-            console.log('确定')
-          },
-          onCancel() {
-            console.log('取消')
-          },
-          year: 2015,
-          month: 2,
-          day: 20,
-        })
+        $("#dt-end").calendar({
+          onChange: function (p, values, displayValues) {
+            console.log(values, displayValues);
+          }
+          });
       }
     },
     mounted() {
-//    $("#dt-start").calendar()
-//    $("#dt-end").calendar()
       this.startTime = GetDateStr(0);
       this.endTime = GetDateStr(0);
       $("#show-place").picker({
@@ -191,7 +216,7 @@
         cols: [
           {
             textAlign: 'center',
-            values: ['全部', '考拉', '考拉2', '考拉3']
+            values: this.fieldList
           }
         ],
         onChange: function () {
