@@ -9,7 +9,11 @@ export const initStore = {
     diviceNum: 1,
     address:"布衣港电商产业园"
   }],
-  banlance:0,
+  accountInfo:{
+    balance: 5,
+    customerService:'',
+    shopName:'未设置'
+  },
   advertisingRevenue:0,
 }
 export const delectGifList = function ({commit},query) {

@@ -31,7 +31,7 @@
   export default {
     computed:{
       ...mapGetters({
-        balance:'balance' ,
+        accountInfo:'accountInfo',
         advertisingRevenue:'advertisingRevenue'
       })
     },
@@ -48,7 +48,7 @@
       }
     },
     mounted() {
-      this.balance2 = toDecimal2(this.balance);
+      this.balance2 = toDecimal2(this.accountInfo.balance);
       this.advertisingRevenue2 = toDecimal2(this.advertisingRevenue);
     }
   }

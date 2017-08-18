@@ -23,8 +23,8 @@
             </label>
           </div>
           <div class="fr">
-            <span class="edit">编辑</span>
-            <span class="del" @click="delAddr(index)">删除</span>
+            <span class="edit"><img src="../assets/icon/edit.png" alt="">编辑</span>
+            <span class="del" @click="delAddr(index)"><img src="../assets/icon/delect.png" alt="">删除</span>
           </div>
         </div>
       </div>

@@ -14,10 +14,10 @@
 			margin-top: 7px;
 		}
 		.all,.off-line,.on-line{
-			margin-left: 20px;
+			margin-left: 5%;
 			border: 2px solid #ddd;
 			float: left;
-			padding: 5px 20px;
+			padding: 4px 4%;
 			border-radius: 5px;
 		}
 		.active{
@@ -39,6 +39,9 @@
 	}
 	.inst{
 		overflow: hidden;
+    span{
+      font-size: 0.9em;
+    }
 	}
 	.space-info{
 		padding: 0;
@@ -46,24 +49,36 @@
 			padding: 10px;
 			background: #fafafa;
 			overflow: hidden;
-			.col{
-				color: #f00;
-			}
 		}
 		.list{
 			background: #fff;
 			padding: 10px;
+      //font-size: 13px;
+
 			li{
 				overflow: hidden;
+        padding-top: 4px;
 				.font{
 					color: #aaa;
 				}
+        .fl{
+          margin-bottom: 2px;
+        }
 				.col{
 					color: #fff;
 					background: #f00;
-					border-radius: 8px;
-					padding: 5px 8px;
+          border: 1px solid #f00;
+					border-radius: 3px;
+					padding: 0px 3px;
+          margin-left: 4px;
 				}
+        .col_flase{
+          color: #0ABF11;
+          border: 1px solid #0ABF11;
+          border-radius: 3px;
+          padding: 0px 3px;
+          margin-left: 4px;
+        }
 			}
 		}
 	}

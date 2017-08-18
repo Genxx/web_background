@@ -18,7 +18,20 @@ var port = process.env.PORT || config.dev.port
 var autoOpenBrowser = !!config.dev.autoOpenBrowser
 // Define HTTP proxies to your custom API backend
 // https://github.com/chimurai/http-proxy-middleware
-var proxyTable = config.dev.proxyTable
+var proxyTable = {
+  '/auth': {
+    target: 'http://localhost:3000',
+    changeOrigin: true
+  },
+  '/api': {
+    target: 'http://localhost:3000',
+    changeOrigin: true
+  },
+  '/oauth': {
+    target: 'http://localhost:3000',
+    changeOrigin: true
+  }
+}
 
 var app = express()
 var compiler = webpack(webpackConfig)

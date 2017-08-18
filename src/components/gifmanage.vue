@@ -6,8 +6,8 @@
         <div class="menu">
           <p class="fl">{{item.moneyGifInfo}}元</p>
           <div class="fr">
-            <span @click="editGif">编辑</span>
-            <span @click="deleteGif(index)">删除</span>
+            <span @click="editGif"><img src="../assets/icon/edit.png" alt="">编辑</span>
+            <span @click="deleteGif(index)"><img src="../assets/icon/delect.png" alt="">删除</span>
           </div>
         </div>
       </li>

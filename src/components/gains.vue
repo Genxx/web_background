@@ -89,6 +89,7 @@
         endTime: '',
         liNum: 1,
         fieldList:['全部', 'test', 'test2', '考拉3'],
+        income:[],
         bill:[{
           field:"考拉",
           num:2,
@@ -208,6 +209,9 @@
           });
       }
     },
+    created(){
+
+    },
     mounted() {
       this.startTime = GetDateStr(0);
       this.endTime = GetDateStr(0);
@@ -225,6 +229,30 @@
           console.log("close");
         }
       })
+
+      const account = localStorage.getItem("account")
+      console.log(this.startTime);
+      console.log(this.endTime);
+      let obj ={
+        "account": account,
+        "startTime":this.startTime,
+        "endTime":this.endTime,
+        "address":'all'
+      }
+      this.$http.post('/api/v1/income/get_income_date_address',obj)
+        .then(function (res) {
+          console.log(res.data)
+          this.fieldList = res.data.address;
+//          if (res.data.success) {
+////            localStorage.setItem("Token", res.data.Token)
+////            this.$router.push('/index')
+//            console.log(res.data)
+//          }else{
+//            console.log(res.data.message)
+//          }
+        }, function (err) {
+          console.log(err)
+        })
     }
   }
 </script>

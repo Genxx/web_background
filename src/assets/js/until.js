@@ -19,3 +19,7 @@ function toDecimal2(x) {
 export {
   toDecimal2
 }
+// //验证码倒计时
+// function time(obj){
+//   if()
+// }

@@ -1,58 +1,84 @@
 @import './hack.less';
+
 #delivery {
-	margin-top: 20px;
-	.list{
-		background: #fff;
+  margin-top: 20px;
+  .list {
+    background: #fff;
     margin-top: 10px;
-		>div{
-			padding: 10px 20px;
-		}
-		.addr{
-			border-bottom: 1px solid #ddd;
-			.box{
-				.addr-col{
-					margin-left: 5px;
-					background: #04BE02;
-					color: #fff;
-					border-radius: 5px;
-					padding: 3px 5px;
-				}
-			}
-			.col{
-				color: #999;
-				margin-top: 5px;
-			}
-		}
-		.menu{
-			overflow: hidden;
-			.fl{
-				margin-top: 0;
-				.weui-cell{
-					padding: 0;
-				}
-			}
-			.weui-cells:before{
-				border-top: none;
-			}
-			.weui-cells:after{
-				border-bottom: none;
-			}
-			.fr{
-				span{
-					margin-left: 10px;
-				}
-			}
-		}
-	}
-	.smit{
-		margin-top: 20px;
-		width: 85%;
-		margin-left: auto;
-		margin-right: auto;
-		background: #04b101;
-		color: #fff;
-		border-radius: 10px;
-		text-align: center;
-		padding: 10px 0;
-	}
+    > div {
+      padding: 10px 20px;
+    }
+    .addr {
+      border-bottom: 1px solid #ddd;
+      .box {
+        .addr-col {
+          margin-left: 5px;
+          background: #04BE02;
+          color: #fff;
+          border-radius: 5px;
+          padding: 3px 5px;
+        }
+      }
+      .col {
+        color: #999;
+        margin-top: 5px;
+      }
+    }
+    .menu {
+      overflow: hidden;
+      .fl {
+        margin-top: 0;
+        .weui-cell {
+          padding: 0;
+        }
+      }
+      .weui-cells:before {
+        border-top: none;
+      }
+      .weui-cells:after {
+        border-bottom: none;
+      }
+      .fr {
+        span {
+          margin-left: 10px;
+          img {
+            margin-right: 3px;
+            margin-top: -1px;
+          }
+        }
+      }
+    }
+  }
+  .smit {
+    margin-top: 20px;
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    background: #04b101;
+    color: #fff;
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px 0;
+  }
+  @media only screen and (min-width: 320px) {
+    .weui-cell {
+      font-size: 12px !important;
+    }
+  }
+  @media only screen and (min-width: 360px) {
+    .weui-cell {
+      font-size: 15px !important;
+    }
+  }
+  @media only screen and (min-width: 400px) {
+    .weui-cell {
+      font-size: 18px !important;
+    }
+  }
+
+  @media only screen and (min-width: 600px) {
+    .weui-cell {
+      font-size: 24px !important;
+    }
+  }
 }

@@ -40,7 +40,7 @@
   export default {
     computed: {
       ...mapGetters({
-        balance: 'balance',
+        accountInfo:'accountInfo',
       })
     },
     components: {},
@@ -68,6 +68,9 @@
             this.cash=this.balance2
           }
           temp = this.cash*0.006
+          if(temp<0.01){
+            temp = 0.01
+          }
           this.cash =  toDecimal2(this.cash);
           this.serviceCharge =  toDecimal2(temp);
           this.realIncome =  this.cash - this.serviceCharge;
@@ -75,7 +78,7 @@
       }
     },
     mounted() {
-      this.balance2 = toDecimal2(this.balance);
+      this.balance2 = toDecimal2(this.accountInfo.balance);
       this.serviceCharge = toDecimal2(this.serviceCharge);
       this.realIncome = toDecimal2(this.realIncome);
     }
