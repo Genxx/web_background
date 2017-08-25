@@ -6,15 +6,16 @@
         <div class="menu">
           <p class="fl">{{item.moneyGifInfo}}元</p>
           <div class="fr">
-            <span @click="editGif"><img src="../assets/icon/edit.png" alt="">编辑</span>
+            <span @click="editGif(index)"><img src="../assets/icon/edit.png" alt="">编辑</span>
             <span @click="deleteGif(index)"><img src="../assets/icon/delect.png" alt="">删除</span>
           </div>
         </div>
       </li>
     </ul>
-    <router-link tag="div" to="addgif" class="smit">
+    <div @click="goaddgif" class="smit">
       添加礼品
-    </router-link>
+    </div>
+
   </div>
 </template>
 
@@ -30,21 +31,31 @@
         gifInfo: 'gifInfo'
       })
     },
-    components: {},
+    components: {
+    },
     data() {
-      return {}
+      return {
+        dialogControl: true
+      }
     },
     methods: {
       editGif(i) {
-
+        this.$router.push('/addgif')
+//        console.log(this.gifInfo[i].typeGifInfo)
+        let obj = {
+          typeGifInfo:this.gifInfo[i].typeGifInfo,
+          moneyGifInfo:this.gifInfo[i].moneyGifInfo,
+          index:i
+        }
+        this.$store.commit('EDIT_GIF',obj)
       },
       deleteGif(i) {
         this.$store.dispatch('delectGifList', i)
       },
-//      del( state , i ){
-//        state.users.splice( i , 1 )
-//      }
-
+      goaddgif(){
+        this.$router.push('/addgif')
+        this.$store.commit('EDIT_GIF',{})
+      }
     },
     mounted() {
 

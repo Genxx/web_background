@@ -21,20 +21,15 @@ const state = {
   ],
   accountInfo: {
     balance: 5,
-    customerService:'大明',
-    shopName:''
+    customerService: '大明',
+    shopName: ''
   },
-  advertisingRevenue: 1.5
+  advertisingRevenue: 1.5,
+  address: ["考拉", "智投"],
+  editGif: {},
+  editDelivery:{}
 }
-// const deviceInfo= [{
-//   shopName: '',
-//   detailedAddress: '',
-//   type: '',
-//   address: '',
-//   diviceNum:0,
-//   address:''
-// }
-// ]
 // const money='30yuan'
 
 export default state;
+

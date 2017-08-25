@@ -114,6 +114,8 @@
           this.income.ads = toDecimal2(res.data.income.ads);
           this.income.cash = toDecimal2(res.data.income.cash);
           this.device = res.data.device;
+          this.$store.commit('SET_ADDRESS',res.data.address);
+          console.log(res.data)
         }, function (err) {
           console.log(err)
         })

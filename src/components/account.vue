@@ -63,6 +63,17 @@
     methods: {},
     mounted() {
       this.balance2 = toDecimal2(this.accountInfo.balance);
+//      const account = localStorage.getItem("account")
+//      this.$http.get('/api/v1/account?account=', account)
+//        .then(function (res) {
+//          this.userName= res.data.userName;
+//          this.userPhone = res.data.userPhone;
+//          let obj = [res.data.
+//          this.$store.commit('SET_ADDRESS',);
+//          console.log(res.data)
+//        }, function (err) {
+//          console.log(err)
+//        })
     }
   }
 </script>

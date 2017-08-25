@@ -7,7 +7,7 @@
     <div class="price">
       <p class="fl">价格</p>
       <p class="fl mk">
-        <input type="text" name="" value="1">
+        <input type="number" name="" value="1">
         <span>币/次</span>
       </p>
     </div>

@@ -64,7 +64,6 @@
           let te2 = parseInt(this.balance2);
           let temp =0;
           if(te>te2){
-            console.log(222222)
             this.cash=this.balance2
           }
           temp = this.cash*0.006

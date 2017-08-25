@@ -19,6 +19,7 @@ import addgif from '../components/addgif.vue';
 import sellername from '../components/sellername.vue';
 import customnum from '../components/customnum.vue';
 import delivery from '../components/delivery.vue';
+import regisDevice from '../components/regis_device.vue';
 
 Vue.use(Router);
 
@@ -96,6 +97,10 @@ export default new Router({
     {
       path:'/delivery',
       component:delivery
+    },
+    {
+      path:'/regisDevice',
+      component:regisDevice
     }
   ],
 })

@@ -18,7 +18,7 @@
       <p class="fl">场地</p>
       <input class="weui-input fl mr0" type="text" value="全部" @click="_showPlace()" id="show-place"/>
     </div>
-    <div class="gains-detail" v-for="item in bill">
+    <div class="gains-detail" v-for="item in bill" v-if="status">
       <div class="tit">
         <p class="fl tit-name">{{item.field}}</p>
         <span class="fl tit-num">{{item.num}}台</span>
@@ -56,7 +56,7 @@
         <p class="fr">{{item.giftNum}}个,{{item.gifMoney}}元</p>
       </div>
     </div>
-
+    <div style="text-align: center;margin-top:30px;color: #2BB17A" v-else="status">赶紧注册设备赚钱啦！</div>
   </div>
 </template>
 
@@ -64,6 +64,7 @@
   import Vue from 'vue'
   import jw from 'vue-weui'
   import Calendar from 'vue2-datepick';
+  import {mapGetters} from 'vuex'
 
   Vue.use(Calendar);
 
@@ -79,16 +80,26 @@
     var d = data.getDate();
     return y + "-" + (m < 10 ? "0" + m : m) + "-" + (d < 10 ? "0" + d : d);
   }
-
+  const account = localStorage.getItem("account")
+  var obj ={
+    "account": account,
+    "startTime":this.startTime,
+    "endTime":this.endTime,
+    "address":'all'
+  }
   export default {
-
+    computed:{
+      ...mapGetters({
+        address:'address',
+      })
+    },
     components: {},
     data() {
       return {
         startTime: '',
         endTime: '',
         liNum: 1,
-        fieldList:['全部', 'test', 'test2', '考拉3'],
+        fieldList:this.address,
         income:[],
         bill:[{
           field:"考拉",
@@ -103,22 +114,8 @@
           lineCoin:0,
           giftNum:0,
           gifMoney:0,
-        },
-          {
-            field:"考拉",
-            num:2,
-            sum:0,
-            onlinePayment:0,
-            adRevenue:0,
-            cashIncome:0,
-            coin:0,
-            onlineCoin:0,
-            adlineCoin:0,
-            lineCoin:0,
-            giftNum:0,
-            gifMoney:0,
-          }
-        ]
+        }],
+        status:false,
       }
     },
     methods: {
@@ -181,20 +178,6 @@
         this.endTime = (GetDateStr(0));
       },
       _freechoce() {
-//        let vm = this;
-//        this.$calendar.show({
-//          onOk(data) {
-//            console.log(data)
-//            vm.startTime = data.year + '-' + (data.month < 10 ? '0' + data.month : data.month) + '-' + (data.day < 10 ? '0' + data.day : data.day)
-//            console.log('确定')
-//          },
-//          onCancel() {
-//            console.log('取消')
-//          },
-//          year: 2015,
-//          month: 2,
-//          day: 20,
-//        })
         $("#dt-start").calendar({
           onChange: function (p, values, displayValues) {
             console.log(values, displayValues);
@@ -229,20 +212,10 @@
           console.log("close");
         }
       })
-
-      const account = localStorage.getItem("account")
-      console.log(this.startTime);
-      console.log(this.endTime);
-      let obj ={
-        "account": account,
-        "startTime":this.startTime,
-        "endTime":this.endTime,
-        "address":'all'
-      }
       this.$http.post('/api/v1/income/get_income_date_address',obj)
         .then(function (res) {
           console.log(res.data)
-          this.fieldList = res.data.address;
+//          this.fieldList = res.data.address;
 //          if (res.data.success) {
 ////            localStorage.setItem("Token", res.data.Token)
 ////            this.$router.push('/index')
@@ -250,6 +223,9 @@
 //          }else{
 //            console.log(res.data.message)
 //          }
+          if(res.data==[]){
+
+          }
         }, function (err) {
           console.log(err)
         })

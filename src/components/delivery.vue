@@ -23,16 +23,16 @@
             </label>
           </div>
           <div class="fr">
-            <span class="edit"><img src="../assets/icon/edit.png" alt="">编辑</span>
+            <span class="edit" @click="edit(index)"><img src="../assets/icon/edit.png" alt="">编辑</span>
             <span class="del" @click="delAddr(index)"><img src="../assets/icon/delect.png" alt="">删除</span>
           </div>
         </div>
       </div>
     </div>
 
-    <router-link tag="div" to="/addaddr" class="smit">
+    <div @click="goAdd()" class="smit">
       添加投放地址
-    </router-link>
+    </div>
   </div>
 </template>
 
@@ -57,11 +57,28 @@
     methods: {
       delAddr(i){
         this.$store.dispatch('delectAddrList', i)
+      },
+      edit(i){
+        let obj = {
+          shopName: this.deviceInfo[i].shopName,
+          detailedAddress: this.deviceInfo[i].detailedAddress,
+          type: this.deviceInfo[i].type,
+          address: this.deviceInfo[i].address,
+          diviceNum: this.deviceInfo[i].diviceNum,
+          index: i
+        }
+        console.log(obj)
+        this.$store.commit('EDIT_DELIVERY', obj)
+        this.$router.push('/addaddr')
+      },
+      goAdd(){
+        this.$store.commit('EDIT_DELIVERY', {})
+        this.$router.push('/addaddr')
       }
+
     },
     mounted() {
       console.log(this.deviceInfo)
-
     }
   }
 </script>
