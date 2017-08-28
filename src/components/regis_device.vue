@@ -62,6 +62,20 @@
   import jw from '../../node_modules/jquery-weui/dist/js/jquery-weui.min.js'
   import WeuiDistpicker from 'weui-distpicker'
 
+  function GetRequest(strName) {
+        var strHref = window.location.href
+        var intPos = strHref.indexOf("?");
+        var strRight = strHref.substr(intPos + 1);
+        var arrTmp = strRight.split("&");
+        for (var i = 0; i < arrTmp.length; i++) {
+            var arrTemp = arrTmp[i].split("=")
+            if (arrTemp[0].toUpperCase() == strName.toUpperCase()) {
+                return arrTemp[1]
+            }
+        }
+        return false;
+    }
+
   function Num() {
     let num = [];
     for (let i = 0; i <= 60; i++) {
@@ -72,15 +86,15 @@
   }
 
   //  离线为：0，在线为：1
-  function onlineStusts(obj) {
-    if (obj == 0) {
-      this.onlineStatus = '离线'
-    } else if (obj == 1) {
-      this.onlineStatus = '在线'
-    } else {
-      this.onlineStatus = ''
-    }
-  }
+  // function onlineStusts(obj) {
+  //   if (obj == 0) {
+  //     this.onlineStatus = '离线'
+  //   } else if (obj == 1) {
+  //     this.onlineStatus = '在线'
+  //   } else {
+  //     this.onlineStatus = ''
+  //   }
+  // }
 
   export default {
     components: {
@@ -90,7 +104,7 @@
       return {
         deviceInfo: {
           deviceType: '',
-          deviceId: '165465',
+          deviceId: '',
           num: '',
           //onlineStatus: '',
           shopName: '',
@@ -137,7 +151,21 @@
           this.error = true;
           this.msg = "请完善所有内容"
         } else {
-          this.error = false
+          this.error = false;
+          var te = this;
+          var obj = this.deviceInfo
+          obj.account = localStorage.getItem("account")
+          this.$http.post('/api/v1/device/device_register',obj)
+          .then((res)=>{
+            if(res.data.code == '1'){
+              $.toast.prototype.defaults.duration = 1000
+              $.toast("设备注册成功", function () {
+                  te.$router.push("/index")
+                });
+            }
+          }).catch((err)=>{
+            console.error(err)
+          })
         }
       },
       checkNum(e){
@@ -156,6 +184,8 @@
     },
     mounted() {
       var self = this;
+      var eid = GetRequest("eid");
+      this.deviceInfo.deviceId = eid
       $("#deviceType").picker({
         title: "请选择设备类型",
         cols: [

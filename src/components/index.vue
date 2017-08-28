@@ -94,6 +94,7 @@
     },
     methods: {
       _scan() {
+        var that = this
         const url = encodeURIComponent(window.location.href)
         this.$http.get('/api/wxpay/get_jssdk_signature?url='+url)
         .then((res)=>{
@@ -109,12 +110,15 @@
             scanType:['qrCode'],
             success:function(res){
               var result = res.resultStr
-              this.$http.get('/api/v1/device/scan_to_regis')
+              that.$http.get('/api/v1/device/scan_to_regis?eid='+result)
               .then((res)=>{
-                alert('ok')
-                // if(res.data.code == '0'){
-                  this.$router.push({path: '/regisDevice',query:{eid:result}})
-                // }
+                if(res.data.code == '0'){
+                  that.$router.push({path: '/regisDevice',query:{eid:result}})
+                }else if(res.data.code == '-1'){
+                  alert('设备唯一码错误')
+                }else if(res.data.code == '1'){
+                  alert('该设备已注册')
+                }
               })
             }
           })
@@ -126,7 +130,7 @@
     created() {
       var account = localStorage.getItem("account")
       console.log(account)
-      this.$http.get('/api/v1/income/get_index_info_income?account=', account)
+      this.$http.get('/api/v1/income/get_index_info_income?account='+account)
         .then(function (res) {
           this.income.total = toDecimal2(res.data.income.total);
           this.income.pay = toDecimal2(res.data.income.pay);
