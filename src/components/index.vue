@@ -94,14 +94,33 @@
     },
     methods: {
       _scan() {
-        wx.scanQRCode({
-          needResult: 0, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
-          scanType: ["qrCode", "barCode"], // 可以指定扫二维码还是一维码，默认二者都有
-          success: function (res) {
-            var result = res.resultStr;// 当needResult 为 1 时，扫码返回的结果
-            console.log(result)
-          }
-        });
+        const url = encodeURIComponent(window.location.href)
+        this.$http.get('/api/wxpay/get_jssdk_signature?url='+url)
+        .then((res)=>{
+          wx.config({
+            appId: 'wxe269be5d7e65716d',
+            timestamp: res.data.timestamp,
+            nonceStr: res.data.noncestr,
+            signature: res.data.signature,
+            jsApiList: ['scanQRCode']
+          })
+          wx.scanQRCode({
+            needResult:1,
+            scanType:['qrCode'],
+            success:function(res){
+              var result = res.resultStr
+              this.$http.get('/api/v1/device/scan_to_regis')
+              .then((res)=>{
+                alert('ok')
+                // if(res.data.code == '0'){
+                  this.$router.push({path: '/regisDevice',query:{eid:result}})
+                // }
+              })
+            }
+          })
+        }).catch((err)=>{
+          console.error(err)
+        })
       }
     },
     created() {

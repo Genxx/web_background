@@ -14,10 +14,10 @@
           <label for="num" class="fl"><em>*</em>设备编号:</label>
           <input id="num" v-model="deviceInfo.num" type="text" placeholder="请填写设备编号" class="fr"/>
         </li>
-        <li class="device-status">
+        <!-- <li class="device-status">
           <label for="onlineStatus" class="fl"><em>*</em>设备状态:</label>
           <input id="onlineStatus" v-model="deviceInfo.onlineStatus" type="text" placeholder="请选择设备状态" class="fr"/>
-        </li>
+        </li> -->
         <li class="device-name">
           <label for="shopName" class="fl"><em>*</em>店名:</label>
           <input id="shopName" v-model="deviceInfo.shopName" type="text" placeholder="请填写商店名称" class="fr"/>
@@ -35,10 +35,10 @@
           <label for="gifName" class="fl"><em>*</em>礼品名称:</label>
           <input id="gifName" v-model="deviceInfo.gifName" type="text" placeholder="请填写设备类型" class="fr"/>
         </li>
-        <li class="gif-num">
+        <!-- <li class="gif-num">
           <label for="gifNum" class="fl"><em>*</em>礼品数量:</label>
           <input id="gifNum" v-model="deviceInfo.gifNum" type="Number" placeholder="请填写礼品数量" class="fr" @blur="checkNum($event)"/>
-        </li>
+        </li> -->
         <li class="remarks">
           <label for="remarks" class="fl">备注:</label>
           <textarea id="remarks" v-model="deviceInfo.remarks" placeholder="备注特殊情况" rows="4" class="fr">
@@ -92,12 +92,12 @@
           deviceType: '',
           deviceId: '165465',
           num: '',
-          onlineStatus: '',
+          //onlineStatus: '',
           shopName: '',
           address: '',
           gifName: '',
           gifPrice: '',
-          gifNum: '',
+          //gifNum: '',
           remarks: '',
         },
         deviceTypeOptions: [
